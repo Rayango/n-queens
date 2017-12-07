@@ -17,6 +17,13 @@
 
 window.findNRooksSolution = function(n) {
   var solution = undefined; //fixme
+  var sequences = [];
+  var board = new Board({n: n});
+  var generateBoard = function(board, pieceCount) {
+    for (var i = 0; i < n; i++) {
+    
+}
+  };
 
   console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
   return solution;

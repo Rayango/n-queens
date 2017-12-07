@@ -79,7 +79,7 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
-      return this.get(rowIndex).filter(a => a === 1).length > 1 ? true : false;
+      return this.get(rowIndex).filter(queen => queen === 1).length > 1 ? true : false;
     },
 
     // test if any rows on this board contain conflicts
@@ -165,21 +165,38 @@
       return false; 
     },
 
-
-
     // Minor Diagonals - go from top-right to bottom-left
     // --------------------------------------------------------------
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
-        
-
-      return false; 
+      // have results variable to hold values of diagonal
+      // generate board
+      // for loop to keep track of x and y coordinates
+        // push each value into the results variable
+      // filter for 1, and if results array is greater than 1 return true, else return false
+      
+      var results = [];  
+      var board = this.rows();
+      for (var i = 0, j = minorDiagonalColumnIndexAtFirstRow; i < board.length; i++, j--) {
+        results.push(board[i][j]);
+      }
+      return results.filter(a => a === 1).length > 1 ? true : false; 
     },
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      return false; // fixme
+      // for loop over length of board + (n - 1)
+        // pass in each diagonalcolumnatfirstrow to callback
+      // if callback returns true return true 
+      // else return false
+      var board = this.rows();
+      for (var i = board.length + board.length - 1; i >= 0; i--) {
+        if (this.hasMinorDiagonalConflictAt(i)) {
+          return true;
+        }
+      }
+      return false;
     }
 
     /*--------------------  End of Helper Functions  ---------------------*/
